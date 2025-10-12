@@ -1,0 +1,68 @@
+/* src/components/Skills/Skills.module.css */
+
+.skillsSection {
+  padding: 100px 5%;
+  max-width: 900px; /* Сделаем сетку чуть компактнее */
+  margin: 0 auto;
+}
+
+.title {
+  font-size: clamp(32px, 5vw, 48px);
+  text-align: center;
+  margin-bottom: 4rem;
+  color: var(--text-color-light);
+}
+
+.skillsGrid {
+  display: grid;
+  /* Адаптивная сетка: минимум 120px, максимум 4 колонки */
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 2rem;
+}
+
+.skillItem {
+  background-color: var(--card-background);
+  border: 1px solid #2a344d; /* Тонкая рамка */
+  border-radius: 10px;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column; /* Иконка и текст в колонку */
+  align-items: center;
+  justify-content: center;
+  gap: 1rem; /* Расстояние между иконкой и текстом */
+  text-align: center;
+  transition: all 0.3s ease;
+
+  opacity: 0; /* Изначально карточка невидима */
+  transform: translateY(50px); /* Изначально сдвинута на 50px вниз */
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out; /* Плавный переход */
+
+}
+
+.skillItem:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  border-color: var(--accent-color);
+}
+
+.skillIcon {
+  font-size: 3.5rem; /* Размер иконки */
+  color: var(--accent-color); /* Цвет иконки */
+  line-height: 1; /* Убираем лишнюю высоту */
+  transition: transform 0.3s ease;
+}
+
+.skillItem:hover .skillIcon {
+  transform: scale(1.1); /* Увеличиваем иконку при наведении на карточку */
+}
+
+.skillName {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  color: var(--text-color-dark);
+}
+
+.skillItem.visible {
+  opacity: 1; /* Становится видимой */
+  transform: translateY(0); /* Возвращается на свою позицию */
+}

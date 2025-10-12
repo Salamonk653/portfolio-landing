@@ -1,0 +1,36 @@
+.footer {
+  padding: 2rem 5%;
+  text-align: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  margin-top: 50px;
+  border-top: 1px solid #1e293b; /* Линия-разделитель */
+}
+
+.links {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem; /* Увеличим расстояние */
+  margin-bottom: 1.5rem;
+}
+
+.links a {
+  color: var(--text-color-dark);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.links a:hover {
+  color: var(--accent-color);
+  transform: translateY(-3px); /* Эффект "подпрыгивания" */
+}
+
+.links svg {
+  width: 28px;
+  height: 28px;
+}
+
+.copyright {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.8rem;
+  color: var(--text-color-dark);
+}

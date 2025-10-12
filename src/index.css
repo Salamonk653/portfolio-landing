@@ -1,0 +1,29 @@
+/* Определяем наши основные цвета в переменных для удобства */
+:root {
+  --background-color: #0d1222; /* Очень темный синий, почти черный */
+  --card-background: #1a223a; /* Фон карточек */
+  --text-color-light: #e0e0e0;  /* Светлый текст */
+  --text-color-dark: #b0b0b0;   /* Более серый текст */
+  --accent-color: #e84949;      /* Акцентный красный */
+  --header-bg-color: rgba(13, 18, 34, 0.95); /* Полупрозрачный фон хедера */
+}
+
+/* Базовый сброс стилей */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--text-color-light);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* --- Новые стили для фона --- */
+  background-color: var(--background-color); /* Это запасной фон */
+  
+  
+}
+

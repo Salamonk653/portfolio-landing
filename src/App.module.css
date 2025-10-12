@@ -1,0 +1,36 @@
+.contentWrapper {
+  position: relative;
+  z-index: 2; /* Слой выше, чем у Hero */
+
+  /* Переносим сюда анимацию фона */
+  background-color: var(--background-color);
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(138, 102, 221, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(79, 112, 223, 0.15) 0%, transparent 40%);
+  background-size: 300% 300%;
+  animation: shimmer 20s ease-in-out infinite;
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    black 200px /* <<-- Плавное проявление на высоте 200px */
+  );
+  /* Префикс для поддержки старых браузеров */
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    black 80px
+  )
+}
+
+/* --- Код анимации --- */
+@keyframes shimmer {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}

@@ -1,0 +1,273 @@
+/* src/components/Hero/Hero.module.css */
+
+.hero {
+  min-height: 100vh;
+  display: flex; /* Используем flexbox для общего выравнивания */
+  flex-direction: column;
+  align-items: center; /* Центрируем содержимое по горизонтали */
+  justify-content: flex-end; /* Прижимаем контент к низу Hero-секции */
+  position: relative;
+  overflow: hidden; /* Обрезаем все, что выходит за границы */
+  padding: 0 1rem 8rem 1rem; /* Отступы: снизу больше */
+  z-index: 1; /* Hero находится на нижнем слое */
+  background: var(--background-color); /* Основной фон */
+}
+
+/* --- Заголовок "Я" --- */
+.superTitle {
+  font-family: 'Roboto Mono', monospace; /* Моноширинный шрифт для акцента */
+  font-size: 3rem;
+  color: #ff3366; /* Яркий акцентный цвет */
+  position: absolute; /* Позиционируем относительно .heroContent */
+  top: -1.5rem; /* Смещаем вверх */
+  left: -2rem; /* Смещаем влево */
+  opacity: 0.8;
+  font-weight: 700;
+  /*-webkit-text-stroke: 1px rgba(255, 255, 255, 0.4);  Полупрозрачная белая обводка */
+  text-shadow: 2px 2px 10px rgba(22, 22, 22, 0.6); /* Объемная тень */
+}
+
+/* --- Основное имя "Salamon" --- */
+.titleMain {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 6rem; /* Очень крупный размер */
+  font-weight: 900; /* Жирный */
+  color: #f0f0f0; /* Почти белый */
+  letter-spacing: -2px; /* Уплотняем буквы */
+  text-transform: uppercase;
+  margin-bottom: -1.5rem; /* Немного наезжает на следующий блок */
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.7); /* Более заметная обводка */
+  text-shadow: 4px 4px 15px rgba(0, 0, 0, 0.8), inset 0 0 5px rgba(255, 255, 255, 0.1); /* Глубокая тень */
+}
+
+
+/* --- Текст "Frontend" --- */
+.titleSub {
+  font-family: 'Inter', sans-serif;
+  font-size: 3.5rem; /* Чуть меньше основного */
+  font-weight: 600;
+  color: #8899aa; /* Серый, чтобы выделить на фоне */
+  letter-spacing: 5px; /* Разряжаем буквы */
+  text-transform: uppercase;
+  -webkit-text-stroke: 0.5px rgba(255, 255, 255, 0.3);
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* --- Текст "разработчик" --- */
+.titleJob {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* --- Контейнер для фото --- */
+.heroImageContainer {
+  position: absolute; /* Абсолютное позиционирование */
+  width: clamp(250px, 40vw, 450px); /* Адаптивная ширина */
+  height: clamp(350px, 55vw, 600px); /* Адаптивная высота */
+  top: 10%; /* Сверху */
+  right: 15%; /* Справа */
+  z-index: 0; /* Под всеми остальными элементами */
+  
+  /* Эффект трехмерности для контейнера фото */
+  transform: rotateY(-15deg) rotateX(5deg);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.5), inset 0 0 15px rgba(236, 236, 236, 0.651);
+  border-radius: 15px;
+  overflow: hidden; /* Обрезаем края, если фото выйдет за рамки */
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.3), transparent); /* Тень у основания фото */
+}
+
+.heroPhoto {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Обрезает фото, чтобы заполнить контейнер */
+  object-position: top center; /* Прижимает фото к верху контейнера */
+  filter: grayscale(20%) brightness(1.1); /* Небольшая корректировка цвета */
+}
+
+/* --- Главный контейнер для текста и кнопки --- */
+.heroContent {
+  position: relative;
+  z-index: 2; /* Над фотографией */
+  max-width: 600px; /* Ограничиваем ширину */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Центрируем элементы внутри */
+  gap: 1.5rem; /* Отступ между блоками */
+  background: radial-gradient(circle at center, rgba(35, 45, 65, 0.7) 0%, transparent 70%); /* Мягкий фон для текста */
+  padding: 2rem;
+  border-radius: 15px;
+}
+
+/* --- Подзаголовки "Мастер цифровых чудес" --- */
+.subContent {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: relative;
+  z-index: 3; /* Еще выше, чтобы быть на переднем плане */
+}
+
+.subtitle {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(1.5rem, 3vw, 2.2rem); /* Адаптивный размер */
+  color: var(--accent-color); /* Красный акцент */
+  font-weight: 700;
+  /* -webkit-text-stroke: 1px rgba(255, 255, 255, 0.6); Белая обводка */
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8); /* Глубокая тень */
+}
+
+.description {
+  font-size: clamp(0.9rem, 2vw, 1.1rem); /* Адаптивный размер */
+  color: var(--text-color-dark);
+  line-height: 1.6;
+  max-width: 400px;
+  -webkit-text-stroke: 0.5px rgba(255, 255, 255, 0.4);
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
+}
+
+/* --- Кнопка "Мои работы" --- */
+.ctaButton {
+  background: linear-gradient(135deg, #e42626 0%, #f02929 100%); /* Градиентный фон */
+  color: white; /* Белый текст */
+  border: none;
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 50px; /* Скругленная форма */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  box-shadow: 0 8px 20px rgba(228, 77, 38, 0.4), inset 0 2px 5px rgba(255,255,255,0.3); /* Объемная тень */
+  text-decoration: none;
+  text-shadow: 1px 1px 3px rgb(0, 0, 0); /* Тень для текста на кнопке */
+  margin-top: 2rem;
+}
+
+.ctaButton:hover {
+  transform: translateY(-3px); /* Легкий подъем при наведении */
+  box-shadow: 0 12px 25px rgb(255, 255, 255), inset 0 2px 5px rgba(255,255,255,0.3);
+}
+
+.ctaButton svg {
+  width: 1.2em;
+  height: 1.2em;
+  fill: white;
+}
+
+/* --- АДАПТИВНОСТЬ ДЛЯ ПЛАНШЕТОВ И МОБИЛЬНЫХ --- */
+@media (max-width: 900px) {
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 100px;
+    min-height: auto;
+    padding-bottom: 4rem;
+  }
+
+  .heroImageContainer {
+    order: 1;
+    position: relative;
+    left: 0;
+    width: 80%;
+    max-width: 350px;
+    height: auto;
+    margin: 0 auto 2rem auto;
+    z-index: 1;
+    transform: perspective(800px) rotateY(-10deg) rotateX(3deg) scale(0.9);
+    box-shadow: 0 10px 25px rgba(168, 168, 168, 0.4);
+  }
+
+  .heroContent {
+    order: 2;
+    position: relative;
+    width: 100%;
+    padding-left: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 2;
+  }
+  
+  /* <<-- НОВЫЕ, САМЫЕ НАДЕЖНЫЕ СТИЛИ ДЛЯ ЗАГОЛОВКА -->> */
+  .title {
+    /* Пустое правило, чтобы сбросить старые стили */
+  }
+
+  .superTitle {
+    display: block;
+    position: static; /* <<-- ВАЖНО: Сбрасываем абсолютное позиционирование */
+    font-size: clamp(1.2rem, 4vw, 1.5rem);
+    color: var(--accent-color);
+    margin-bottom: 0.5rem; /* Отступ снизу */
+  }
+
+  .titleMain {
+    display: block;
+    font-size: clamp(3rem, 15vw, 4rem);
+    line-height: 1.1; /* Чуть больше пространства */
+    margin-bottom: 0.25rem; /* Небольшой отступ снизу */
+  }
+
+  /* Контейнер для 'Frontend разработчик' */
+  .subtitleWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .titleSub {
+    display: block;
+    font-size: clamp(1.6rem, 8vw, 2.2rem);
+    line-height: 1.1;
+    letter-spacing: 0;
+    color: #5f7087;
+  }
+  
+  .titleJob {
+    display: block;
+    font-size: clamp(0.9rem, 4vw, 1rem);
+    line-height: 1.1;
+  }
+  /* -- КОНЕЦ НОВЫХ СТИЛЕЙ -- */
+
+  .subContent {
+    margin-top: 2.5rem;
+  }
+}
+
+/* Еще меньше для очень маленьких телефонов */
+@media (max-width: 480px) {
+  .hero {
+    padding-bottom: 2rem;
+  }
+  .superTitle {
+    font-size: 1.5rem;
+  }
+  .titleMain {
+    font-size: clamp(2.5rem, 10vw, 3rem);
+  }
+  .titleSub {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+    letter-spacing: 2px;
+  }
+  .titleJob {
+    font-size: 0.9rem;
+  }
+  .subtitle {
+    font-size: clamp(1rem, 3.5vw, 1.5rem);
+  }
+}

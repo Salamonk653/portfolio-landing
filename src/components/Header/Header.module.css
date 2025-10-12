@@ -1,0 +1,123 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5%; /* Отступы 1rem сверху/снизу, 5% по бокам */
+  background-color: rgba(10, 25, 47, 0.85); /* Полупрозрачный фон */
+  backdrop-filter: blur(10px); /* Эффект размытия для фона "матовое стекло" */
+  position: fixed; /* Фиксируем вверху страницы */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* Чтобы хедер был поверх других элементов */
+}
+
+.logo {
+  font-size: 1.5rem; /* 24px */
+  font-weight: 700;
+  color: var(--text-color-light);
+}
+
+.navList {
+  list-style: none; /* Убираем маркеры списка */
+  display: flex;
+  gap: 2rem; /* Расстояние между пунктами меню */
+}
+
+.navList a {
+  text-decoration: none; /* Убираем подчеркивание */
+  color: var(--text-color-light);
+  font-size: 1rem; /* 16px */
+  transition: color 0.3s ease-in-out; /* Плавный переход цвета */
+}
+
+.navList a:hover {
+  color: var(--accent-color); /* Меняем цвет при наведении */
+}
+
+
+/* --- СТИЛИ ДЛЯ КНОПКИ-БУРГЕРА --- */
+.menuButton {
+  display: none; /* По умолчанию кнопка скрыта на десктопе */
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1001; /* Кнопка всегда поверх */
+  padding: 0;
+  width: 30px;
+  height: 24px;
+  position: relative;
+}
+
+.bar1, .bar2, .bar3 {
+  width: 100%;
+  height: 3px;
+  background-color: var(--text-color-light);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  position: absolute;
+  left: 0;
+}
+
+.bar1 { top: 0; }
+.bar2 { top: 50%; transform: translateY(-50%); }
+.bar3 { bottom: 0; }
+
+/* Анимация бургера в крестик */
+.menuButton_open .bar1 {
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+}
+.menuButton_open .bar2 {
+  opacity: 0;
+}
+.menuButton_open .bar3 {
+  bottom: 50%;
+  transform: translateY(50%) rotate(-45deg);
+}
+
+
+/* --- АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ --- */
+@media (max-width: 900px) {
+  /* Показываем кнопку-бургер */
+  .menuButton {
+    display: block;
+  }
+
+  /* Стилизуем выезжающую панель меню */
+  .nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: min(75vw, 400px); /* Ширина 75% экрана, но не больше 400px */
+    height: 100vh;
+    background-color: var(--card-background);
+    box-shadow: -10px 0 30px -15px rgba(2,12,27,0.7);
+    
+    /* Прячем панель за экраном */
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    
+    /* Центрируем ссылки внутри */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Показываем панель, когда она открыта */
+  .nav_open {
+    transform: translateX(0);
+  }
+
+  /* Выстраиваем ссылки в колонку */
+  .navList {
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem; /* Увеличиваем расстояние */
+  }
+  
+  /* Увеличиваем текст ссылок для удобства нажатия */
+  .navList a {
+    font-size: 1.5rem;
+  }
+}

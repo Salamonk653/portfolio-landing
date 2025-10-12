@@ -1,0 +1,86 @@
+.aboutSection {
+  padding: 100px 5%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: clamp(32px, 5vw, 48px);
+  text-align: center;
+  margin-bottom: 4rem;
+  color: var(--text-color-light);
+}
+
+.aboutContent {
+  display: grid;
+  grid-template-columns: 3fr 2fr; /* Текст : Фото = 3 : 2 */
+  gap: 3rem;
+  align-items: flex-start;
+}
+
+.textContainer p {
+  color: var(--text-color-dark);
+  font-size: 1.1rem; /* 17.6px */
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+/* Стили для контейнера фото */
+.imageContainer {
+  width: 100%;
+  max-width: 300px;
+  justify-self: center;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%; /* Оставляем круглым */
+  
+  /* 1. Новый "солнечный" градиент */
+  background: radial-gradient(
+    ellipse at center,
+    #ffdd00 0%,   /* Ярко-желтый центр */
+    #ff9900 50%,   /* Оранжевый в середине */
+    #ff3300 100%  /* Красноватый край */
+  );
+
+  /* 2. Эффект свечения */
+  box-shadow: 0 0 60px 15px rgba(255, 153, 0, 0.5);
+
+  /* 3. Применяем анимацию пульсации */
+  animation: sunPulse 6s ease-in-out infinite;
+}
+
+/* Стили для самого фото, когда вы его добавите */
+.photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* Адаптивность для экранов меньше 768px */
+@media (max-width: 768px) {
+  .aboutContent {
+    grid-template-columns: 1fr; /* Все в одну колонку */
+    gap: 2rem;
+  }
+  
+  .imageContainer {
+    order: -1; /* Меняем порядок, чтобы фото было над текстом */
+    margin-bottom: 2rem;
+    max-width: 250px;
+  }
+}
+
+@keyframes sunPulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 60px 15px rgba(255, 153, 0, 0.5);
+  }
+  50% {
+    transform: scale(1.05); /* Слегка увеличиваем */
+    box-shadow: 0 0 80px 25px rgba(255, 100, 0, 0.6); /* Свечение становится ярче и больше */
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 60px 15px rgba(255, 153, 0, 0.5);
+  }
+}

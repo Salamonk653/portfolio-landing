@@ -1,0 +1,110 @@
+/* src/components/Portfolio/Portfolio.module.css */
+.portfolioSection {
+  padding: 100px 5%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: clamp(32px, 5vw, 48px);
+  text-align: center;
+  margin-bottom: 4rem;
+  color: var(--text-color-light);
+}
+
+.projectsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.projectCard {
+  position: relative; /* Важно для наложения */
+  border-radius: 10px;
+  overflow: hidden; /* Обрезаем все, что выходит за рамки */
+  box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
+  transition: all 0.3s ease;
+  background-color: var(--card-background);
+}
+
+.projectCard:hover {
+  transform: scale(1.03); /* Увеличиваем карточку при наведении */
+  box-shadow: 0 20px 40px -15px rgba(2, 12, 27, 0.9);
+}
+
+.projectImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Картинка полностью заполняет карточку */
+  transition: transform 0.4s ease;
+}
+
+.projectCard:hover .projectImage {
+  transform: scale(1.1); /* Эффект приближения картинки */
+}
+
+.projectOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.5rem;
+  /* Градиент от прозрачного к темному для читаемости текста */
+  background: linear-gradient(to top, rgba(10, 25, 47, 1) 20%, rgba(10, 25, 47, 0.8) 70%, transparent 100%);
+}
+
+.projectTitle {
+  font-size: 1.5rem;
+  color: var(--text-color-light);
+  margin-bottom: 0.5rem;
+}
+
+.projectDescription {
+  color: var(--text-color-dark);
+  line-height: 1.5;
+  font-size: 0.9rem;
+  height: 0; /* Изначально описание скрыто */
+  opacity: 0;
+  transition: all 0.4s ease;
+  margin-bottom: 1rem;
+}
+
+/* Показываем описание при наведении на карточку */
+.projectCard:hover .projectDescription {
+  height: 45px; /* Задаем высоту, чтобы описание появилось */
+  opacity: 1;
+}
+
+.projectStack {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.projectStack li {
+  background-color: rgba(232, 73, 73, 0.1);
+  color: var(--accent-color);
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+}
+
+.projectLinks {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  font-size: 1.5rem;
+}
+
+.projectLinks a {
+  color: var(--text-color-light);
+  transition: color 0.3s ease;
+}
+
+.projectLinks a:hover {
+  color: var(--accent-color);
+}
