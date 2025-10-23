@@ -1,10 +1,10 @@
 // src/components/Hero/Hero.tsx
 
 import styles from './Hero.module.css';
-import salamonPhoto from '../../assets/img/hero.png'; // Убедитесь, что фото с прозрачным фоном
+import salamonPhoto from '../../assets/img/hero.png'; 
 import { useParallax } from 'react-scroll-parallax';
 
-// Вставляем иконку документа прямо в компонент
+
 const DocumentIcon = () => (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
@@ -17,7 +17,7 @@ const DocumentIcon = () => (
 
 const Hero = () => {
     const parallax = useParallax<HTMLDivElement>({
-        speed: -150, // Фото будет двигаться медленнее
+        speed: -150, 
     });
     return (
         <section className={styles.hero} ref={parallax.ref}>
